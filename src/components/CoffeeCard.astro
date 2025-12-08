@@ -1,26 +1,43 @@
 ---
+import { Image } from "astro:assets";
 export interface Props {
     title: string;
     price: string;
-    image: string;
+    image: ImageMetadata;
     imageAlt?: string;
-    rating?: string | number;
+    rating?: number;
     votes?: string | number;
-    tag?: string;
+    popular?: boolean;
+    available?: boolean;
 }
 
-const { title, price, image, imageAlt = "", rating, votes, tag } = Astro.props;
+const {
+    title,
+    price,
+    image,
+    imageAlt = "",
+    rating,
+    votes,
+    popular,
+    available,
+} = Astro.props;
+
+const formatRating = (rating: number) =>
+    rating.toLocaleString(undefined, {
+        maximumFractionDigits: 2,
+        minimumFractionDigits: 1,
+    });
 ---
 
 <div
     class="bg-background-light dark:bg-zinc-900 rounded-lg overflow-hidden shadow-lg transition-transform hover:scale-105 duration-300"
 >
     <div class="relative">
-        <img src={image} alt={imageAlt} class="w-full h-48 object-cover" />
+        <Image src={image} alt={imageAlt} class="w-full h-48 object-cover" />
         {
-            tag && (
+            popular && (
                 <span class="absolute top-3 left-3 bg-yellow-300/80 text-yellow-900 text-xs font-semibold px-2.5 py-1 rounded-full backdrop-blur-sm">
-                    {tag}
+                    Popular
                 </span>
             )
         }
@@ -32,19 +49,27 @@ const { title, price, image, imageAlt = "", rating, votes, tag } = Astro.props;
             </h3>
             <span
                 class="bg-green-100 dark:bg-green-900/50 text-green-800 dark:text-green-300 text-sm font-semibold px-2.5 py-0.5 rounded-md"
-                >{price}</span
             >
+                ${price}
+            </span>
         </div>
-        {
-            rating !== undefined && votes !== undefined && (
-                <div class="flex items-center text-sm text-gray-500 dark:text-gray-400 mt-2">
-                    <span class="material-icons text-yellow-500 text-base!">
-                        star
+        {!available && <span class="text-red-400">Sold out</span>}
+        <div
+            class="flex items-center text-sm text-gray-500 dark:text-gray-400 mt-2"
+        >
+            <span
+                class={`material-icons ${rating ? "text-yellow-500" : ""} text-base!`}
+            >
+                star
+            </span>
+            {
+                rating && (
+                    <span class="ml-1 font-semibold">
+                        {formatRating(rating)}
                     </span>
-                    <span class="ml-1 font-semibold">{rating}</span>
-                    <span class="ml-1">({votes} votes)</span>
-                </div>
-            )
-        }
+                )
+            }
+            <span class="ml-1">{votes ? `(${votes} votes)` : "No votes"}</span>
+        </div>
     </div>
 </div>
