@@ -9,16 +9,20 @@ const allCoffees: Coffee[] = await getCoffees();
 ---
 
 <Layout>
-    <div class="text-center max-w-3xl relative py-10">
-        <DecorationSvg class="absolute top-0 right-0" />
+    <div
+        class="text-center max-w-3xl relative py-10 flex flex-col items-center"
+    >
+        <DecorationSvg class="absolute top-0 right-0 z-0" />
         <h1 class="text-[2rem] font-bold text-lightest relative z-10">
             Our Collection
-            <p class="mt-3 text-sm text-lighter text-[1rem] font-medium">
-                Introducing our Coffee Collection, a selection of unique coffees
-                from different roast types and origins, expertly roasted in
-                small batches and shipped fresh weekly.
-            </p>
         </h1>
+        <h2
+            class="max-w-xl mt-3 text-sm text-lighter text-[1rem] font-medium relative z-10"
+        >
+            Introducing our Coffee Collection, a selection of unique coffees
+            from different roast types and origins, expertly roasted in small
+            batches and shipped fresh weekly.
+        </h2>
         <Content client:load allCoffees={allCoffees} />
     </div>
 </Layout>

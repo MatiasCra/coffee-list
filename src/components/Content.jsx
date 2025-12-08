@@ -24,7 +24,7 @@ export default function Content({ allCoffees }) {
                     onClick={filterAll}
                     class={
                         (!onlyAvailable ? activeClasses : inactiveClasses) +
-                        ` text-lightest hover:bg-lightest hover:text-darker font-medium
+                        ` text-lightest hover:bg-lightest hover:text-darker font-semibold
                          text-[0.875rem] py-2 px-4 rounded-lg text-sm transition-colors cursor-pointer`
                     }
                 >
@@ -34,7 +34,7 @@ export default function Content({ allCoffees }) {
                     onClick={filterAvailable}
                     class={
                         (onlyAvailable ? activeClasses : inactiveClasses) +
-                        ` text-lightest hover:bg-lightest hover:text-darker font-medium
+                        ` text-lightest hover:bg-lightest hover:text-darker font-semibold
                         text-[0.875rem] py-2 px-4 rounded-lg text-smtransition-colors cursor-pointer`
                     }
                 >
