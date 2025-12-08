@@ -73,6 +73,8 @@ const coffees: Coffee[] = [
     },
 ];
 
-export const getCoffees = () => {
-    return coffees;
+export const getCoffees = (filterOnlyAvailable = false) => {
+    return filterOnlyAvailable
+        ? coffees.filter((coffee) => coffee.available === true)
+        : coffees;
 };
