@@ -1,3 +1,22 @@
-<div>
-    <h1>404: Not found</h1>
-</div>
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const path = Astro.url.pathname;
+---
+
+<BaseLayout>
+    <div class="h-dvh w-screen flex flex-col items-center justify-center">
+        <h1 class="font-mono text-xl md:text-2xl lg:text-4xl">
+            <span class="text-sold-out"> 404: </span>
+            Not found
+        </h1>
+        <p class="text-lg font-mono mt-1">Path: {path}</p>
+        <p class="mt-1 text-lighter">The requested page couldn't be found.</p>
+        <a
+            href="/"
+            class="mt-3 border py-2 px-3 rounded-xl hover:bg-lightest hover:text-darker"
+        >
+            Go home
+        </a>
+    </div>
+</BaseLayout>
