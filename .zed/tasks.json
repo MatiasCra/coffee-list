@@ -1,0 +1,7 @@
+[
+  {
+    "label": "run locally",
+    "command": "npx",
+    "args": ["astro", "dev", "--host", "0.0.0.0", "--port", "8000"]
+  }
+]
