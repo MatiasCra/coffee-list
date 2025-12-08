@@ -46,7 +46,10 @@ export default function CoffeeCard(props) {
                     <div class="flex justify-center items-center font-semibold">
                         {rating && (
                             <>
-                                <img src={StarFillSvg.src} />
+                                <img
+                                    src={StarFillSvg.src}
+                                    alt="filled yellow star"
+                                />
                                 <span class="ml-1 text-lightest">
                                     {formatRating(rating)}
                                 </span>
@@ -55,7 +58,7 @@ export default function CoffeeCard(props) {
                         )}
                         {!rating && (
                             <>
-                                <img src={StarSvg.src} />
+                                <img src={StarSvg.src} alt="Outlined star" />
                                 <span class="ml-1">No votes</span>
                             </>
                         )}
