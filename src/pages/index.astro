@@ -1,11 +1,90 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Layout from "../layouts/Layout.astro";
+import CoffeeCard from "../components/CoffeeCard.astro";
 ---
 
 <Layout>
-	<Welcome />
+    <div class="text-center max-w-xl mx-auto relative">
+        <svg
+            class="absolute -top-10 -right-12 w-28 h-28 text-gray-500/10 dark:text-gray-400/10 hidden md:block"
+            fill="none"
+            viewBox="0 0 100 100"
+            xmlns="http://www.w3.org/2000/svg"
+        >
+            <path
+                d="M50 100C77.6142 100 100 77.6142 100 50C100 22.3858 77.6142 0 50 0C22.3858 0 0 22.3858 0 50"
+                stroke="currentColor"
+                stroke-width="2"></path>
+            <path
+                d="M50 80C66.5685 80 80 66.5685 80 50C80 33.4315 66.5685 20 50 20C33.4315 20 20 33.4315 20 50"
+                stroke="currentColor"
+                stroke-width="2"></path>
+        </svg>
+        <h1 class="text-3xl font-bold text-gray-100 dark:text-white">
+            Our Collection
+        </h1>
+        <p class="mt-3 text-sm text-gray-300 dark:text-gray-400">
+            Introducing our Coffee Collection, a selection of unique coffees
+            from different roast types and origins, expertly roasted in small
+            batches and shipped fresh weekly.
+        </p>
+    </div>
+    <div class="flex justify-center items-center gap-4 mt-6">
+        <button
+            class="bg-gray-400 dark:bg-gray-700 text-white font-medium py-2 px-5 rounded-lg text-sm transition-colors hover:bg-gray-500 dark:hover:bg-gray-600"
+            >All Products</button
+        >
+        <button
+            class="text-gray-200 dark:text-gray-400 font-medium py-2 px-5 rounded-lg text-sm transition-colors hover:bg-gray-400/20 dark:hover:bg-gray-700/50"
+            >Available Now</button
+        >
+    </div>
+    <div class="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <CoffeeCard
+            title="Cappuccino"
+            price="$5.20"
+            image="https://lh3.googleusercontent.com/aida-public/AB6AXuDhzEqKvWKZ9LutOvp60keNkPIr5nU8QBuOkJ7-mvTcheViKJ6j6qkWyI8J7fTtsKhPwjJP4sySgY3ED8l2Be7zOcTqz7savQpYFqxfoi4m69PPSrUqDzS0px6P21g6HnBuiBMz9L3vUdT5GF51a6-4-lXq1GQNpsd2Mu-LBHN3p2cq58jJzzSS454AL2uB392ExriJGZMe6WQbioab_sRZd465zRP46mi1Pfj6-eaT-3uRuAJU6vfw0D24poX2t5jSbQTypwbQZzM"
+            rating="4.7"
+            votes="85"
+            tag="Popular"
+        />
+        <CoffeeCard
+            title="House Coffee"
+            price="$3.50"
+            image="https://lh3.googleusercontent.com/aida-public/AB6AXuCee3BdZT5U2U1q2_FlE6F1WhSMfuY8sD_CasMdy14IbK5h4rlnTgaGoq-GCdUn10KAtdsu3jqWigmHPLE_2H_xIIKbUkV8LX5QLZeelfehEoeV7cqgzdO5a1G-jEri98RnSJ6T6pe27k-USKaNRq3t-QfhquM7auK3KBrtH9GcYwpbElC79vDMJl8TPJCgUZyoi4gHALhhpPysCfP5DDwV04HcD2yPP5i5KdLD7tam2rhVAvEifs0-S0NRaxBrxJp3TvgjLxxy28g"
+            rating="4.85"
+            votes="14"
+            tag="Popular"
+        />
+        <CoffeeCard
+            title="Espresso"
+            price="$4.10"
+            image="https://lh3.googleusercontent.com/aida-public/AB6AXuBKNavQsXMjrYfXNK4iaJK8Ys-DKfpp1_uiUBd6PjGmwuuHOXNyqMMpu3AVpfrZmlYp21WLYhKZZtTz3dQVGyVAIQv94t76kBPTIWp8TVV65uuZBGWO6MWzjbTgeoqakpTxBbY66LnfZvPpCYt_X1zOjSYdvq5wbs7kGr258f20ukQCk9cuHhL1gZxN87UJwXacnnL4eUCt3PiSHqS2IDk6PXOSj6uikgoGbGHVDPFEF8qL4ztnc7J5a4WcYv_YW30u2Spn-i5TdJo"
+            rating="?"
+            votes="?"
+        />
+        <CoffeeCard
+            title="Coffee Latte"
+            price="$4.50"
+            image="https://lh3.googleusercontent.com/aida-public/AB6AXuB6j_OmdsuqrM-Ol2NX-qlwH55P4XwzAc8EZ8jesPIfNbFxO34TuQcDn95kDO87j6oa7NDwklDHdgaOh2q61oZuNNOP2Ukn3_ndO0p6z4uXDnEyrhB0Zzx--L7VUKXgMCpbYvAKzP_2D1hqyyWxg3OTxWZd667RkGPgXUgcmtoDOJmVnzPfaR26mR7hMdCqU1Lekm-rydRWxrlj3aIp1XrqP_q52LYfq2F1s-0Jp0x1h41-ih3EK722KmrJPT18iMwrhKKKhpVJpQs"
+            imageAlt="A smooth and creamy coffee latte in a white mug"
+            rating="5.0"
+            votes="23"
+        />
+        <CoffeeCard
+            title="Chocolate Coffee"
+            price="$4.00"
+            image="https://lh3.googleusercontent.com/aida-public/AB6AXuCbsf97NqrqG30rpbG-Vd1pptQmaItbmi3esBO3hWg1c6wWE7Ro-9xGlvBIZoDfoKRe1wjH9BJNp3UNkvYFKNEUlQsZUGSkcgG1zp0NK_dajyW0G8Jif5JZb95GxplTbI3b_nwUvWSmLdxLqIGBu6W3M7ereLt0VQZdfhXfoaSIpeT6jJ3bOaFS3BiZ2wGGzMlFiqXOkVqs-eJsmlqovw05JeH4ZK84w-wrBvIP5G-WrJguCl0MmkcH0by6DXdpvA-qYotigJ3emD4"
+            imageAlt="A rich chocolate coffee in a dark mug"
+            rating="4.65"
+            votes="122"
+            tag="Sold out"
+        />
+        <CoffeeCard
+            title="Valentine Coffee"
+            price="$5.50"
+            image="https://lh3.googleusercontent.com/aida-public/AB6AXuCH40YKi_4CWm_5cOwhsIglF8ArcnkXz603CVxODIRvrJbcL_8XQ7amE1TKC4a7pmJzjd87WNV0YYYgXJccfEpohAyS70QvkCUb1lAD0k5eYmjgqlGi9Ac8jb4eDon16EksqW3sP6NcwczzGNjUkza_aoJmt8oTPOrKg_yBLhb27hGGxnFm_g7-u-8yxcLrbCjFWX_3eytxlV_GatGteHU-JPKWUiht-peGGNpl30u2whahvP1GsY9_Ux6fscralO0kF5QGp_cilrY"
+            imageAlt="A special Valentine-themed coffee with pink foam"
+        />
+    </div>
 </Layout>
