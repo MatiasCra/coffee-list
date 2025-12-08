@@ -1,24 +1,10 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Content from "../components/Content.jsx";
-import { Image, getImage } from "astro:assets";
 import { getCoffees } from "../data/coffee";
+import type { Coffee } from "../data/coffee";
 
-const coffeeOptimizedImage = async (image) => {
-    return await getImage({
-        src: image,
-        format: "webp",
-        width: image.width,
-        height: image.height,
-    });
-};
-
-const allCoffees = getCoffees().map((coffee) => {
-    return {
-        optimizedImage: coffeeOptimizedImage(coffee.image),
-        ...coffee,
-    };
-});
+const allCoffees: Coffee[] = await getCoffees();
 ---
 
 <Layout>

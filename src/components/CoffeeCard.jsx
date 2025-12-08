@@ -38,7 +38,7 @@ export default function CoffeeCard(props) {
                         {title}
                     </h3>
                     <span class="bg-green-100 dark:bg-green-900/50 text-green-800 dark:text-green-300 text-sm font-semibold px-2.5 py-0.5 rounded-md">
-                        ${price}
+                        {price}
                     </span>
                 </div>
                 {!available && <span class="text-red-400">Sold out</span>}

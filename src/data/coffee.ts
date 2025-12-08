@@ -1,80 +1,63 @@
-import Cappuccino from "../assets/images/cappuccino.png";
-import HouseCoffee from "../assets/images/house-coffee.png";
-import Espresso from "../assets/images/espresso.png";
-import CoffeeLatte from "../assets/images/coffe-latte.png";
-import ChocolateCoffee from "../assets/images/chocolate-coffee.png";
-import ValentineCoffee from "../assets/images/valentine-coffee.png";
+import { getImage } from "astro:assets";
 
-interface Coffee {
-    title: string;
-    desc: string;
+interface CoffeeData {
+    id: number;
+    name: string;
+    image: string;
     price: string;
-    image: ImageMetadata;
-    rating?: number;
-    votes?: number;
-    popular?: boolean;
+    rating: number | null;
+    votes: number;
+    popular: boolean;
     available: boolean;
 }
 
-const coffees: Coffee[] = [
-    {
-        title: "Cappuccino",
-        desc: "A cappuccino with intricate latte art on a wooden table",
-        price: "5.20",
-        image: Cappuccino,
-        rating: 4.7,
-        votes: 85,
-        popular: true,
-        available: true,
-    },
-    {
-        title: "House Coffee",
-        desc: "A simple cup of black house coffee seen from above",
-        price: "3.50",
-        image: HouseCoffee,
-        rating: 4.85,
-        votes: 14,
-        popular: true,
-        available: true,
-    },
-    {
-        title: "Espresso",
-        desc: "A shot of espresso in a white cup, showing a rich crema",
-        price: "4.10",
-        image: Espresso,
-        rating: 4.9,
-        votes: 44,
-        available: true,
-    },
-    {
-        title: "Coffee Latte",
-        desc: "A smooth and creamy coffee latte in a white mug",
-        price: "4.50",
-        image: CoffeeLatte,
-        rating: 5,
-        votes: 23,
-        available: true,
-    },
-    {
-        title: "Chocolate Coffee",
-        desc: "A smooth and creamy coffee latte in a white mug",
-        price: "4.00",
-        image: ChocolateCoffee,
-        rating: 4.65,
-        votes: 122,
-        available: false,
-    },
-    {
-        title: "Valentine Coffee",
-        desc: "A special Valentine-themed coffee with pink foam",
-        price: "5.50",
-        image: ValentineCoffee,
-        available: true,
-    },
-];
+export interface Coffee {
+    name: string;
+    desc: string;
+    price: string;
+    imageSrc: string;
+    imageMetadata: ImageMetadata;
+    rating: number | null;
+    votes: number;
+    popular: boolean;
+    available: boolean;
+}
 
-export const getCoffees = (filterOnlyAvailable = false) => {
-    return filterOnlyAvailable
-        ? coffees.filter((coffee) => coffee.available === true)
-        : coffees;
+const coffeeOptimizedImage = async (image: string) => {
+    return await getImage({
+        src: image,
+        format: "webp",
+        width: 512,
+        height: 512,
+    });
+};
+
+export const getCoffees = async () => {
+    const response = await fetch(
+        "https://raw.githubusercontent.com/devchallenges-io/curriculum/refs/heads/main/4-frontend-libaries/challenges/group_1/data/simple-coffee-listing-data.json",
+    );
+    const data = await response.json();
+    return data.map(
+        ({
+            name,
+            image,
+            price,
+            rating,
+            votes,
+            popular,
+            available,
+        }: CoffeeData) => {
+            return {
+                name,
+                desc: name,
+                price,
+                imageSrc: image,
+                imageMetadata: coffeeOptimizedImage(image),
+                rating,
+                votes,
+                popular,
+                available,
+            };
+        },
+    );
 };

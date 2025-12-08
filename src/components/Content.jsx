@@ -44,11 +44,11 @@ export default function Content({ allCoffees }) {
             <div class="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                 {coffees.map(
                     ({
-                        title,
-                        price,
+                        name,
                         desc,
-                        image,
-                        optimizedImage,
+                        price,
+                        imageSrc,
+                        imageMetadata,
                         rating,
                         votes,
                         popular,
@@ -56,11 +56,11 @@ export default function Content({ allCoffees }) {
                     }) => {
                         return (
                             <CoffeeCard
-                                title={title}
+                                title={name}
                                 price={price}
                                 imageAlt={desc}
-                                imageSrc={image.src}
-                                imageAttrs={optimizedImage.attributes}
+                                imageSrc={imageSrc}
+                                imageAttrs={imageMetadata.attributes}
                                 rating={rating}
                                 votes={votes}
                                 popular={popular}
