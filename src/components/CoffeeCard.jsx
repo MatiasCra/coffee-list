@@ -26,8 +26,9 @@ export default function CoffeeCard(props) {
                 <img
                     src={imageSrc}
                     alt={imageAlt}
-                    {...imageAttrs}
-                    class="w-full h-48 object-cover"
+                    width={512}
+                    height={365}
+                    class="w-full object-cover"
                 />
                 {popular && (
                     <span class="absolute top-3 left-3 bg-star text-darker text-[0.625rem] font-semibold px-2.5 py-1 rounded-full">
@@ -49,6 +50,9 @@ export default function CoffeeCard(props) {
                                 <img
                                     src={StarFillSvg.src}
                                     alt="filled yellow star"
+                                    width={24}
+                                    height={24}
+                                    class="-mt-1"
                                 />
                                 <span class="ml-1 text-lightest">
                                     {formatRating(rating)}
@@ -58,7 +62,12 @@ export default function CoffeeCard(props) {
                         )}
                         {!rating && (
                             <>
-                                <img src={StarSvg.src} alt="Outlined star" />
+                                <img
+                                    src={StarSvg.src}
+                                    alt="Outlined star"
+                                    width={24}
+                                    height={24}
+                                />
                                 <span class="ml-1">No votes</span>
                             </>
                         )}
