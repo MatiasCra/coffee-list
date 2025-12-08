@@ -1,9 +1,24 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import CoffeeCard from "../components/CoffeeCard.astro";
+import Content from "../components/Content.jsx";
+import { Image, getImage } from "astro:assets";
 import { getCoffees } from "../data/coffee";
 
-const coffees = getCoffees();
+const coffeeOptimizedImage = async (image) => {
+    return await getImage({
+        src: image,
+        format: "webp",
+        width: image.width,
+        height: image.height,
+    });
+};
+
+const allCoffees = getCoffees().map((coffee) => {
+    return {
+        optimizedImage: coffeeOptimizedImage(coffee.image),
+        ...coffee,
+    };
+});
 ---
 
 <Layout>
@@ -32,45 +47,5 @@ const coffees = getCoffees();
             batches and shipped fresh weekly.
         </p>
     </div>
-    <div class="flex justify-center items-center gap-4 mt-6">
-        <button
-            class="bg-gray-400 dark:bg-gray-700 text-white font-medium py-2 px-5 rounded-lg text-sm transition-colors hover:bg-gray-500 dark:hover:bg-gray-600"
-        >
-            All Products
-        </button>
-        <button
-            class="text-gray-200 dark:text-gray-400 font-medium py-2 px-5 rounded-lg text-sm transition-colors hover:bg-gray-400/20 dark:hover:bg-gray-700/50"
-        >
-            Available Now
-        </button>
-    </div>
-    <div class="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        {
-            coffees.map(
-                ({
-                    title,
-                    price,
-                    desc,
-                    image,
-                    rating,
-                    votes,
-                    popular,
-                    available,
-                }) => {
-                    return (
-                        <CoffeeCard
-                            title={title}
-                            price={price}
-                            imageAlt={desc}
-                            image={image}
-                            rating={rating}
-                            votes={votes}
-                            popular={popular}
-                            available={available}
-                        />
-                    );
-                },
-            )
-        }
-    </div>
+    <Content client:load allCoffees={allCoffees} />
 </Layout>
