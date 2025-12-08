@@ -5,3 +5,17 @@
         navigation: auto;
     }
 }
+
+@theme {
+    --color-lightest: #fef7ee;
+    --color-lighter: #6f757c;
+    --color-mid: #4d5562;
+    --color-star: #f6c768;
+    --color-price: #bee3cc;
+    --color-darker: #1b1d1f;
+    --color-darkest: #111315;
+    --color-sold-out: #ed735d;
+    --color-decoration: #302522;
+
+    --font-sans: "DM Sans Variable", sans-serif;
+}

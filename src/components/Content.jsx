@@ -1,10 +1,8 @@
 import CoffeeCard from "../components/CoffeeCard.jsx";
 import { useState } from "preact/hooks";
 
-const activeClasses =
-    "bg-gray-400 dark:bg-gray-700 text-white hover:bg-gray-500 dark:hover:bg-gray-600";
-const inactiveClasses =
-    "text-gray-200 dark:text-gray-400 hover:bg-gray-400/20 dark:hover:bg-gray-700/50";
+const activeClasses = "bg-mid";
+const inactiveClasses = "bg-transparent";
 
 export default function Content({ allCoffees }) {
     const [coffees, setCoffees] = useState(allCoffees);
@@ -26,7 +24,8 @@ export default function Content({ allCoffees }) {
                     onClick={filterAll}
                     class={
                         (!onlyAvailable ? activeClasses : inactiveClasses) +
-                        " font-medium py-2 px-5 rounded-lg text-sm transition-colors cursor-pointer"
+                        ` text-lightest hover:bg-lightest hover:text-darker font-medium
+                         text-[0.875rem] py-2 px-4 rounded-lg text-sm transition-colors cursor-pointer`
                     }
                 >
                     All Products
@@ -35,7 +34,8 @@ export default function Content({ allCoffees }) {
                     onClick={filterAvailable}
                     class={
                         (onlyAvailable ? activeClasses : inactiveClasses) +
-                        " font-medium py-2 px-5 rounded-lg text-smtransition-colors cursor-pointer"
+                        ` text-lightest hover:bg-lightest hover:text-darker font-medium
+                        text-[0.875rem] py-2 px-4 rounded-lg text-smtransition-colors cursor-pointer`
                     }
                 >
                     Available Now

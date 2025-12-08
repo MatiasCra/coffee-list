@@ -1,7 +1,7 @@
 ---
 import "../styles/global.css";
 import { Image } from "astro:assets";
-import bgImg from "../assets/images/interior.png";
+import bgImg from "../assets/images/bg-cafe-lg.jpg";
 ---
 
 <!doctype html>
@@ -27,9 +27,7 @@ import bgImg from "../assets/images/interior.png";
             }
         </style>
     </head>
-    <body
-        class="bg-background-light dark:bg-background-dark font-display text-gray-700 dark:text-gray-300 antialiased"
-    >
+    <body class="bg-darkest font-sans text-lightest">
         <div class="relative min-h-screen p-4 sm:p-6 lg:p-8">
             <div class="absolute inset-0 z-0">
                 <div
@@ -37,18 +35,18 @@ import bgImg from "../assets/images/interior.png";
                 >
                 </div>
                 <Image
-                    alt="A beautiful cafe interior with a barista in the background"
-                    class="object-cover w-full h-1/2 opacity-30 dark:opacity-20"
+                    alt="The outside of a Caffe in a painting style"
+                    class="object-cover w-full h-60"
                     src={bgImg}
                     layout="none"
                     loading="eager"
                 />
             </div>
             <main
-                class="relative z-10 max-w-5xl mx-auto mt-16 sm:mt-24 lg:mt-28"
+                class="relative z-10 max-w-5xl mx-auto mt-16 md:mt-24 lg:mt-28"
             >
                 <div
-                    class="bg-[#27272A]/80 dark:bg-[#1C1917]/80 backdrop-blur-xl p-8 sm:p-10 rounded-xl border border-gray-600/20 shadow-2xl shadow-black/20"
+                    class="bg-darker p-8 sm:p-10 rounded-xl flex items-center justify-center"
                 >
                     <slot />
                 </div>
