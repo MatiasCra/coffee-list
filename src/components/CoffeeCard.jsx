@@ -21,14 +21,14 @@ export default function CoffeeCard(props) {
     } = props;
 
     return (
-        <div class="bg-darker rounded-lg overflow-hidden transition-transform hover:scale-105 duration-300">
+        <div class="overflow-hidden transition-transform hover:scale-105 duration-300">
             <div class="relative">
                 <img
                     src={imageSrc}
                     alt={imageAlt}
                     width={512}
                     height={365}
-                    class="w-full object-cover"
+                    class="w-full object-cover rounded-lg"
                 />
                 {popular && (
                     <span class="absolute top-3 left-3 bg-star text-darker text-[0.625rem] font-semibold px-2.5 py-1 rounded-full">
@@ -67,12 +67,17 @@ export default function CoffeeCard(props) {
                                     alt="Outlined star"
                                     width={24}
                                     height={24}
+                                    class="-mt-1"
                                 />
                                 <span class="ml-1">No votes</span>
                             </>
                         )}
                     </div>
-                    {!available && <span class="text-sold-out">Sold out</span>}
+                    {!available && (
+                        <span class="text-sold-out font-semibold">
+                            Sold out
+                        </span>
+                    )}
                 </div>
             </div>
         </div>
